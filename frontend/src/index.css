@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+
+/* === Tema Global === */
+@layer base {
+  :root {
+    --bg-color: #f9fafb; /* terang */
+    --text-color: #1f2937;
+    --card-bg: rgba(255, 255, 255, 0.75); /* transparan sedikit */
+  }
+
+  .dark {
+    --bg-color: #0f172a; /* gelap */
+    --text-color: #e2e8f0;
+    --card-bg: rgba(30, 41, 59, 0.6); /* transparan gelap */
+  }
+
+ html,
+body {
+  @apply min-h-screen w-full transition-colors duration-300;
+  background: url("/bg-pattern.jpg") center/cover no-repeat fixed;
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden !important;
+  scrollbar-gutter: stable; /* biar layout gak geser pas scrollbar muncul */
+}
+.input-style {
+  @apply border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-red-400 w-full;
+}
+
+/* === Scrollbar Styling (opsional, biar halus & kecil) === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+  /* Efek blur untuk konten (misalnya popup/login card) */
+  .glass-card {
+    @apply rounded-2xl shadow-lg backdrop-blur-md;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Kalau mau efek blur seluruh halaman login */
+  .login-page {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .container {
+    @apply transition-colors duration-300;
+    background-color: transparent !important; /* ⛔ penting: biar gak nutup blur */
+    color: var(--text-color);
+  }
+}
